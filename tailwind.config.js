@@ -9,7 +9,14 @@ module.exports = {
         'primary': '#ffa300',
         'mainrey': '#242327'
       }
+    },
+    screens: {
+      'sm': '576px', // custom breakpoint for small screens
+      'md': '768px', // custom breakpoint for medium screens
+      'lg': '992px', // custom breakpoint for large screens
+      'xl': '1280px', // default breakpoint for extra-large screens 
     }
+
   },
   plugins: [],
 }
