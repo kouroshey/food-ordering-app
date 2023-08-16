@@ -1,5 +1,4 @@
 import React from 'react'
-import Card from '../Card/Card'
 import {MdFavoriteBorder, MdStarBorder, MdAdd} from 'react-icons/md'
 
 const FoodListMain = () => {

@@ -4,7 +4,7 @@ import supabase from '../config/supabaseClient';
 
 
 const Home = () => {
-    console.log(supabase);
+
     return (
 
         <>
