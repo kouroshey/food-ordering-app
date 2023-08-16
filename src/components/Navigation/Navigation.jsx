@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { FaInstagram, FaTwitter, FaWhatsapp, FaFacebookF } from 'react-icons/fa';
 import { MdOutlineMenu, MdOutlineClose } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
-
-const Navigation = () => {
-  const [isScrolling, setIsScrolling] = useState(false)
+const Navigation = ({logo}) => {
+  const [isScrolling, setIsScrolling] = useState(true)
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 70) {
+      if (window.scrollY > 20) {
         console.log('bg changed');
         setIsScrolling(true)
       } else {
@@ -19,10 +19,10 @@ const Navigation = () => {
     window.addEventListener('scroll', handleScroll)
 
     return () => {
-      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener('scroll', handleScroll)
     }
 
-  }, [])
+  }, [window.scrollY])
 
 
   const iconsArray = [
@@ -34,11 +34,12 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={`nav-container fixed top-0 right-0 left-0 bg-black transition duration-300 ease-in-out z-50 ${isScrolling ? 'bg-[#171717bb]' : ''}`}>
-        <div className="nav-content px-6 py-1 w-full h-[100%] flex relative justify-between md:justify-evenly lg:justify-between items-center">
+      <nav className={`nav-container fixed top-0 right-0 left-0 transition duration-300 ease-in-out z-50 ${isScrolling ? 'bg-[#171717f0]' : 'bg-transparent'}`}>
+        <div className="nav-content px-6 py-1 w-full flex relative justify-between md:justify-evenly lg:justify-between items-center">
           <div className="nav-logo flex flex-2 justify-center gap-2 items-center">
-            <img src="./pictures/logo.png" alt="site-logo" className='w-12 md:w-20 lg:w-24' />
-            <p className='text-white font-medium text-xl md:hidden'>Food Ordering App</p>
+            <Link to='/'><img src="img/logo.png" className='w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24' alt="logo"/></Link>
+            <div className={`logo bg-${logo} py-1 bg-center bg-cover `}></div>
+            <p className='text-white font-bold text-xl md:hidden'>Food App</p>
           </div>
 
           <MdOutlineMenu className='text-primary text-4xl md:hidden' />
