@@ -1,23 +1,24 @@
 import React from 'react'
-import {MdFavoriteBorder, MdStarBorder, MdAdd} from 'react-icons/md'
+import { MdFavoriteBorder, MdStarBorder, MdAddShoppingCart, MdOutlineRemoveShoppingCart } from 'react-icons/md';
+import { IconContext } from 'react-icons';
 
-const FoodListMain = () => {
-    // const foodsArray = [
-    //     { id: 1, name: 'kebab', price: '10$', rate: 5, img: '../img/foods/kebab.jpg'}
-    // ]
+const FoodComp = () => {
+
     return (
         <>
-            <div className='food-card border-sm border-gray-300 w-[16rem] border rounded-md shadow-md p-4'>
-                <div className='food-img flex flex-wrap w-full h-[12rem] rounded-md'>                    
-                    <img src="img/foods/kebab.jpg" alt="" srcset="" />
+            <div className='food-card border-sm border-gray-300 w-full border rounded-md shadow-md'>
+                <div className='food-img flex flex-wrap w-full rounded-md'>
+                    <img src="img/havana.jpg" className='rounded-t-md' alt="" srcset="" />
                 </div>
-                <div className='flex items-center w-full flex-col'>
-                    <p className='food-name'>چلوکباب</p>
-                    <p className='food-price'>20$</p>
-                    <p className='food-rate'>5 star <MdStarBorder style={{width:"1rem", height:"1rem"}}/></p>
-                    <div className="food-options">
-                        <div className="food-order">
-
+                <div className='flex items-start w-full gap-3 flex-col p-4'>
+                    <p className='food-name font-bold text-xl'>Havana Pasta</p>
+                    <p className='food-price font-thin text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ex </p>
+                    <div className="food-options w-full flex justify-between">
+                        <p className='food-price text-red-400'>20$</p>
+                        <div className="food-order flex gap-2">
+                            <MdAddShoppingCart className='font-bold text-2xl hover:scale-110 ' />
+                            {/* <MdOutlineRemoveShoppingCart className='font-bold text-2xl hover:scale-125 ' /> */}
+                            <MdFavoriteBorder className='font-bold text-2xl hover:scale-110 '/>
                         </div>
                     </div>
                 </div>
@@ -26,4 +27,4 @@ const FoodListMain = () => {
     )
 }
 
-export default FoodListMain
+export default FoodComp
