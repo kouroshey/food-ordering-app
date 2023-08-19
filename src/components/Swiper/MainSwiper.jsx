@@ -10,9 +10,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 
-const MainSwiper = () => {
+const MainSwiper = (props) => {
+  const sliderItems = props.foods
   return (
-    <div className='w-full'>  
+    <div className='w-full'>
       <Swiper
         // install Swiper modules
         modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -22,34 +23,40 @@ const MainSwiper = () => {
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}
         breakpoints={
-          {320: {
-            slidesPerView: 1,
-            spaceBetween: 20
-          },
-          // when window width is >= 480px
-          480: {
-            slidesPerView: 1,
-            spaceBetween: 30
-          },
-          // when window width is >= 640px
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 40
+          {
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 20
+            },
+            // when window width is >= 480px
+            480: {
+              slidesPerView: 1,
+              spaceBetween: 30
+            },
+            // when window width is >= 640px
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40
             },
             1024: {
               slidesPerView: 3,
               spaceBetween: 40
+            },
+            1280: {
+              slidesPerView: 4,
+              spaceBetween:40
             }
-          
+
           }
         }
       >
-        <SwiperSlide><FoodComp /></SwiperSlide>
-        <SwiperSlide><FoodComp /></SwiperSlide>
-        <SwiperSlide><FoodComp /></SwiperSlide>
-        <SwiperSlide><FoodComp /></SwiperSlide>
-        <SwiperSlide><FoodComp /></SwiperSlide>
-        <SwiperSlide><FoodComp /></SwiperSlide>
+        {sliderItems && sliderItems.map(item => (
+          item.popular ? <SwiperSlide>
+          <FoodComp food={item} key={item.id} />
+        </SwiperSlide> : '' 
+        ) )}
+
+
       </Swiper>
     </div>
   )

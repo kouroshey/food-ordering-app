@@ -1,18 +1,20 @@
 import React from 'react';
 import {useRoutes } from 'react-router-dom';
-import Navigation from './components/Navigation/Navigation';
+import Header from './components/Header/Header';
 import routes from './routes';
+import Footer from './components/Footer/Footer';
 
 
 const App = () => {
   let router = useRoutes(routes)
   return (
     <>
-      <Navigation />
-      {router}
+      <Header />
+      {router} 
+      <Footer/>
     </>
 
   )
 }
 
-export default App
+export default App  
