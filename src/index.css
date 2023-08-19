@@ -6,6 +6,10 @@
     font-family: 'Roboto Slab', serif;
  }
 
+ html {
+  scroll-behavior: smooth;
+}
+
  .food-card-icons {
    font-size: 5rem;
  }

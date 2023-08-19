@@ -20,8 +20,6 @@ const MainSwiper = (props) => {
         spaceBetween={50}
         slidesPerView={1}
         pagination={{ clickable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
         breakpoints={
           {
             320: {
@@ -50,11 +48,12 @@ const MainSwiper = (props) => {
           }
         }
       >
-        {sliderItems && sliderItems.map(item => (
-          item.popular ? <SwiperSlide>
-          <FoodComp food={item} key={item.id} />
+        {/* this map create all of slider items */}
+        {sliderItems ? sliderItems.map(item => (
+          item.popular ? <SwiperSlide key={item.id}>
+          <FoodComp food={item}  />
         </SwiperSlide> : '' 
-        ) )}
+        ) ) : props.error}
 
 
       </Swiper>

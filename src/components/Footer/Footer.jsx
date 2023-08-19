@@ -4,7 +4,7 @@ import { FaTelegramPlane, FaInstagram, FaFacebookF, FaTwitter } from 'react-icon
 const Footer = () => {
     return (
         <>
-            <div className="footer w-full p-8 bg-gray-800">
+            <div id='Footer' className="footer w-full p-8 bg-gray-800">
                 <div className="footer-content  w-full flex flex-col md:flex-row items-center gap-8 md:justify-evenly">
                     <div className="footer-logo flex items-center gap-2 pt-2 md:w-max">
                         <Link to='/'><img src="img/logo.png" className='w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24' alt="logo" /></Link>
