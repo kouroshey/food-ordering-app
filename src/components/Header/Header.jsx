@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavbarComp from './NavbarComp';
 
-const Header = () => {
+const Header = (props) => {
   // set state for changing header bg when scrolled
   const [isScrolling, setIsScrolling] = useState(true)
 
@@ -30,8 +30,8 @@ const Header = () => {
 
   return (
     <>
-      <header className={`header-container fixed top-0 right-0 left-0 transition duration-300 ease-in-out z-50 ${isScrolling ? 'bg-[#171717f0]' : 'bg-transparent'}`}>
-          <NavbarComp />
+      <header className={`header-container fixed top-0 right-0 left-0 transition duration-300 ease-in-out z-40 ${isScrolling ? 'bg-[#171717f0]' : 'bg-transparent'}`}>
+          <NavbarComp onShowCart= {props.onShowCart} />
       </header>
     </>
   )

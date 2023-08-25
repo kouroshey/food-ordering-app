@@ -1,9 +1,8 @@
 import React from 'react'
-import { MdFavoriteBorder, MdStarBorder, MdAddShoppingCart, MdOutlineRemoveShoppingCart } from 'react-icons/md';
-import { IconContext } from 'react-icons';
+import {MdAddShoppingCart, MdOutlineRemoveShoppingCart } from 'react-icons/md';
 
 const FoodComp = (props) => {
-    const {id, title, img, price} = props.food
+    const {title, img, price} = props.food
 
     return (
         <>
@@ -14,13 +13,13 @@ const FoodComp = (props) => {
                 <div className='flex items-start w-full gap-3 flex-col p-4'>
                     <p className='food-name font-bold text-xl '>{title}</p>
                     <p className='food-price font-thin text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ex </p>
-                    <div className="food-options w-full flex justify-between">
-                        <p className='food-price text-primary'>{price} $</p>
-                        <div className="food-order flex gap-2">
-                            <MdAddShoppingCart className='font-bold text-2xl hover:scale-110 hover:text-primary transition-all ease-in-out' />
-                            {/* <MdOutlineRemoveShoppingCart className='font-bold text-2xl hover:scale-125 ' /> */}
-                            <MdFavoriteBorder className='font-bold text-2xl hover:scale-110 hover:text-primary transition-all ease-in-out'/>
+                    <div className="food-options w-full flex justify-between items-center">
+                        <p className='food-price text-primary text-2xl'>{price} $</p>
+                        <div className="food-order flex gap-2 bg-primary p-2 rounded-md hover:scale-110 transition-all ease-in-out cursor-pointer">
+                            <span>add to card</span>
+                            <MdAddShoppingCart className='font-bold text-2xl' />
                         </div>
+                            {/* <MdOutlineRemoveShoppingCart className='font-bold text-2xl hover:scale-125 ' /> */}
                     </div>
                 </div>
             </div>
