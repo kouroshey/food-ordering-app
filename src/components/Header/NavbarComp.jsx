@@ -39,7 +39,6 @@ const NavbarComp = (props) => {
                         <p className='text-white font-bold text-xl md:hidden lg:text-2xl lg:block'>Food App</p>
                     </div>
                     <div className="nav-right flex gap-4">
-                        <CartButton onShowCart = {props.onShowCart} />
                         <MdOutlineMenu className='text-primary text-4xl md:hidden hover:scale-110 hover:text-white transition-all ease-in-out' onClick={showMenuHandler} />
                         <div className="nav-menu__sm fixed z-50 left-0 top-0 h-full bg-black/70 backdrop-blur-sm w-full hidden" ref={smMenu} >
                             <div className='flex flex-col ml-16 mr-4 mt-4  bg-black items-start text-white rounded-md'>

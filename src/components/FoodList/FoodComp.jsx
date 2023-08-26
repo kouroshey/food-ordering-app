@@ -16,7 +16,7 @@ const FoodComp = (props) => {
                     <div className="food-options w-full flex justify-between items-center">
                         <p className='food-price text-primary text-2xl'>{price} $</p>
                         <div className="food-order flex gap-2 bg-primary p-2 rounded-md hover:scale-110 transition-all ease-in-out cursor-pointer">
-                            <span>add to card</span>
+                            <span>add to cart</span>
                             <MdAddShoppingCart className='font-bold text-2xl' />
                         </div>
                             {/* <MdOutlineRemoveShoppingCart className='font-bold text-2xl hover:scale-125 ' /> */}
