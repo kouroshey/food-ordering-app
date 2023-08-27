@@ -9,13 +9,31 @@ const defaultObj = {
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
-    const updatedItems = state.items.concat(action.item)
     const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount
-    // console.log(updatedTotalAmount);
+    const exitingCartItemIndex = state.items.findIndex(item => item.id === action.item.id)
+    const exitingCartItem = state.items[exitingCartItemIndex]
+    let updatedItems;
+    if (exitingCartItem) {
+      const updatedItem = {
+        ...exitingCartItem,
+        amount: exitingCartItem.amount + action.item.amount
+      };
+      updatedItems = [...state.items]
+      updatedItems[exitingCartItemIndex] = updatedItem;
+    } else if (action.type === "REMOVE") {
+      
+
+    } else {
+      updatedItems = state.items.concat(action.item)
+    }
+
     return {
       items: updatedItems,
-      totalAmount: updatedTotalAmount 
+      totalAmount: updatedTotalAmount
     };
+
+  }
+  if (action.type === "REMOVE") {
 
   }
   return defaultObj
@@ -36,7 +54,7 @@ function CartContextProvider(props) {
       type: "REMOVE",
       id: id
     })
-   }
+  }
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,

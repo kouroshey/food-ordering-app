@@ -7,21 +7,22 @@ const FoodComp = (props) => {
     const [addIsClicked, setAddIsClicked] = useState(false)
     const inputRef = useRef()
     const cartCtx = useContext(CartContext)
-
+    
     const inputShowHandler = () => {
         setAddIsClicked(true)
     }
-
+    
     const inputCloseHandler = () => {
         setAddIsClicked(false)
     }
-
+    
     const addFoodToCartHandler = () => {
+        const foodAmount = inputRef.current.value
         const foodData = {
             id: id,
             title: title,
             price: price,
-            amount: inputRef.current.value
+            amount: +foodAmount
         }
         cartCtx.addItem(foodData)
     }

@@ -7,27 +7,25 @@ import CartContext from '../../store/cart-context'
 const Cart = (props) => {
     const cartCtx = useContext(CartContext)
     const [cartItems, setCartItems] = useState(cartCtx.items)
+    const addItemHandler = cartCtx.addItem
+    const removeItemHandler = cartCtx.removeItem
     return (
-        <Modal onCloseCart={props.onCloseCart} title={'Your Cart Details:'}>
+        <Modal onCloseCart={props.onCloseCart} title={'Cart Details'} width="w-[90%] md:w-[70%] lg:w-[50%]">
             <div className="cart-container w-full mt-6">
-                <table className='w-full flex flex-col border border-white rounded-md p-2'>
-                    <tr className='flex justify-between mb-2'>
-                        <th className='text-primary'>amount</th>
-                        <th className='text-primary'>food</th>
-                        <th className='text-primary'>price</th>
-                    </tr>
+                <ul className='w-full flex flex-col rounded-md p-2 gap-3'>
+                    
                     {cartItems.length > 0 ? cartItems.map(item => (
-                        <CartItem {...item} />
+                        <CartItem {...item} addItemHandler = {addItemHandler} removeItemHandler= {removeItemHandler} />
                     )) :
-                        <tr>
+                        <p>
                             <td>You have not any order yet!</td>
-                        </tr>
+                        </p>
                     }
 
-                </table>
+                </ul>
                 <div className="cart-bottom flex justify-between items-center p-4">
                     <div>Balance: {cartCtx.totalAmount}</div>
-                    <button className='bg-green-500 px-4 py-2 rounded-md text-center'>order</button>
+                    <button className='hover:scale-110 hover:bg-green-500 hover:text-black transition-all ease-in-out border border-green-500 border-sm px-4 py-2 rounded-md text-center'>order</button>
                 </div>
             </div>
         </Modal>
