@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlinePlus, AiOutlineLine, AiOutlineClose } from 'react-icons/ai';
 
 
 const CartItem = (props) => {
+    const [foodAmount,setFoodAmount] = useState(props.amount)
     const addFoodToCartHandler = () => {
         props.addItemHandler(props)
+        setFoodAmount(prev => prev += 1)
     }
     const removeFromFoodCartHandler = () => {
-        props.removeItemHandler(props)
+        props.removeItemHandler(props.id)
+        setFoodAmount(prev => prev -= 1)
     }
     return (
         <>
@@ -18,7 +21,7 @@ const CartItem = (props) => {
                         <span>{props.price}   $</span>
                         <span className='flex items-center justify-center'>
                             <AiOutlineClose className='text-xs' />
-                            <span>{props.amount}</span>
+                            <span>{foodAmount}</span>
                         </span>
                     </div>
                 </div>
@@ -27,7 +30,7 @@ const CartItem = (props) => {
                         <AiOutlinePlus className='font-bold text-xl hover:text-black ' onClick={addFoodToCartHandler}/>
                     </div>
                     <div className='p-1 hover:scale-110 hover:bg-green-500 rounded-md transition-all ease-in-out border border-green-500 border-sm'>
-                        <AiOutlineLine className='font-bold text-xl hover:text-black '/>
+                        <AiOutlineLine className='font-bold text-xl hover:text-black ' onClick={removeFromFoodCartHandler}/>
                     </div>
                 </div>
             </li>

@@ -19,9 +19,9 @@ const FoodComp = (props) => {
     const addFoodToCartHandler = () => {
         const foodAmount = inputRef.current.value
         const foodData = {
-            id: id,
-            title: title,
-            price: price,
+            id,
+            title,
+            price,
             amount: +foodAmount
         }
         cartCtx.addItem(foodData)
@@ -43,9 +43,6 @@ const FoodComp = (props) => {
                         <div className="food-ordering-section flex gap-2">
                             {addIsClicked ?
                                 <>
-                                    <button onClick={inputCloseHandler} className=" text-white food-order-button flex gap-2 bg-red-500 p-2 rounded-md hover:scale-110 transition-all ease-in-out cursor-pointer">
-                                        clear
-                                    </button>
                                     <button onClick={addFoodToCartHandler} className=" text-white food-order-button flex gap-2 bg-green-500 p-2 rounded-md hover:scale-110 transition-all ease-in-out cursor-pointer">
                                         add
                                     </button>

@@ -4,7 +4,9 @@ import CartContext from '../../store/cart-context'
 
 const CartButton = (props) => {
     const cartCtx = useContext(CartContext)
-    const numberOfCartItems = cartCtx.items.length
+    const numberOfCartItems = cartCtx.items && cartCtx.items.reduce((curNum, item) => {
+        return curNum + item.amount
+    }, 0) 
     return (
         <>
             <div onClick={props.onShowCart} className="food-order justify-center flex gap-2 bg-green-500 text-black px-2 transition-all ease-in-out cursor-pointer items-center">

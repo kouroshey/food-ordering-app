@@ -6,16 +6,20 @@ import CartContext from '../../store/cart-context'
 
 const Cart = (props) => {
     const cartCtx = useContext(CartContext)
-    const [cartItems, setCartItems] = useState(cartCtx.items)
-    const addItemHandler = cartCtx.addItem
-    const removeItemHandler = cartCtx.removeItem
+    const addItemHandler = item => {
+        item = { ...item, amount:1 }
+        cartCtx.addItem(item)
+    }
+    const removeItemHandler = id => {
+        cartCtx.removeItem(id)
+    }
     return (
         <Modal onCloseCart={props.onCloseCart} title={'Cart Details'} width="w-[90%] md:w-[70%] lg:w-[50%]">
             <div className="cart-container w-full mt-6">
                 <ul className='w-full flex flex-col rounded-md p-2 gap-3'>
                     
-                    {cartItems.length > 0 ? cartItems.map(item => (
-                        <CartItem {...item} addItemHandler = {addItemHandler} removeItemHandler= {removeItemHandler} />
+                    {cartCtx.items.length > 0 ? cartCtx.items.map(item => (
+                        <CartItem {...item} addItemHandler = {addItemHandler.bind(null, item)} removeItemHandler= {removeItemHandler.bind(null, item.id)} />
                     )) :
                         <p>
                             <td>You have not any order yet!</td>
