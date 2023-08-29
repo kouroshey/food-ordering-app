@@ -10,11 +10,6 @@ const defaultObj = {
 const cartReducer = (state, action) => {
     if (action.type === "ADD") {
         const updatedTotalAmount = Math.trunc((state.totalAmount + action.item.price * action.item.amount) * 10) / 10
-        console.log('log1', action.item.price);
-        console.log('log2', action.item.amount);
-        console.log('log3', action.item.price * action.item.amount);
-        console.log('log4', state.totalAmount);
-        console.log('log5', updatedTotalAmount);
         const exitingCartItemIndex = state.items.findIndex(item => item.id === action.item.id)
         const exitingCartItem = state.items[exitingCartItemIndex]
         let updatedItems;
@@ -42,7 +37,6 @@ const cartReducer = (state, action) => {
         let updatedItems;
         if (exitingCartItem.amount === 1) {
             updatedItems = state.items.filter(item => item.id !== action.id)
-            console.log(updatedItems);
             return {
                 items: updatedItems,
                 totalAmount: updatedTotalAmount
