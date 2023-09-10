@@ -1,30 +1,26 @@
-import React, { useRef, useState, useContext } from 'react'
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { MdAddShoppingCart } from 'react-icons/md';
-import CartContext from '../../store/cart-context';
+import { cartSliceActions } from '../../store/cartSlice';
 
 const FoodComp = (props) => {
     const { title, img, price, id } = props.food
     const [addIsClicked, setAddIsClicked] = useState(false)
-    const inputRef = useRef()
-    const cartCtx = useContext(CartContext)
-    
+    const dispatch = useDispatch()
+    const cart = useSelector(state => state.cart)
+    console.log(cart);
     const inputShowHandler = () => {
         setAddIsClicked(true)
     }
-    
-    const inputCloseHandler = () => {
-        setAddIsClicked(false)
-    }
-    
+
     const addFoodToCartHandler = () => {
-        const foodAmount = inputRef.current.value
-        const foodData = {
-            id,
-            title,
-            price,
-            amount: +foodAmount
-        }
-        cartCtx.addItem(foodData)
+        dispatch(cartSliceActions.addToCart({
+            id: id,
+            title: title,
+            price: price,
+            totalPrice: price,
+            quantity: 1
+        })) 
     }
 
 
@@ -46,7 +42,7 @@ const FoodComp = (props) => {
                                     <button onClick={addFoodToCartHandler} className=" text-white food-order-button flex gap-2 bg-green-500 p-2 rounded-md hover:scale-110 transition-all ease-in-out cursor-pointer">
                                         add
                                     </button>
-                                    <input ref={inputRef} type="number" className=' border-b border-primary w-10 text-xl pl-2 outline-none' max='5' min='1' defaultValue='1' />
+                                    <input type="number" className=' border-b border-primary w-10 text-xl pl-2 outline-none' max='5' min='1' defaultValue='1' />
                                 </>
                                 :
                                 <div onClick={inputShowHandler} className="food-order-button flex gap-2 bg-primary p-2 rounded-md hover:scale-110 transition-all ease-in-out cursor-pointer">
