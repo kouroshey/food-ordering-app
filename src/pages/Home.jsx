@@ -9,7 +9,7 @@ const Home = () => {
         <>
             <main id='Home'>
                 <section className='relative w-full'>
-                    <div className="main-img bg-[url('./images/bg-sm.png')] bg- bg-center md:bg-center h-screen md:bg-[url('./images/bg.png')]"></div>
+                    <div className="main-img bg-[url('./images/bg-sm.png')] bg-center md:bg-center h-screen md:bg-[url('./images/bg.png')]"></div>
                     <div className='w-full h-[100vh] bg-black/10 absolute top-0'>
 
                     </div>
