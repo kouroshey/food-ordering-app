@@ -3,18 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     items: [],
     totalAmount: 0,
-    cartIsShown: false
+    cartIsShown: false,
+    totalItems: 0
 }
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState: initialState,
     reducers: {
-        addToCart(state, action) {
+        addToCartHandler(state, action) {
             const newItem = action.payload
             state.totalAmount = state.totalAmount + newItem.price
             const exitingCartItem = state.items.find(item => item.id === newItem.id)
             state.totalAmount++
+            state.totalItems++
             if (!exitingCartItem) {
                 state.items.push({
                     id: newItem.id,
@@ -24,7 +26,7 @@ const cartSlice = createSlice({
                     quantity: 1
                 })
             } else {
-                exitingCartItem++;
+                exitingCartItem.quantity = exitingCartItem.quantity + 1;
                 exitingCartItem.totalPrice = exitingCartItem.totalPrice + newItem.price
             }
         

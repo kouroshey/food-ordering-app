@@ -13,10 +13,10 @@ const FoodComp = (props) => {
     }
 
     const addFoodToCartHandler = () => {
-        dispatch(cartSliceActions.addToCart({
+        dispatch(cartSliceActions.addToCartHandler({
             id: id,
             title: title,
-            price: price,
+            price: Number(price),
             totalPrice: price,
             quantity: 1
         })) 

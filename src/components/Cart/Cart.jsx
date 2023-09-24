@@ -2,28 +2,20 @@ import React, { useContext } from 'react'
 import Modal from '../Modal/Modal'
 import CartItem from './CartItem'
 import CartContext from '../../store/cart-context'
-
+import { useSelector, useDispatch } from 'react-redux';
+import { cartSliceActions } from '../../store/cartSlice';
 
 const Cart = (props) => {
-    const cartCtx = useContext(CartContext)
-    const addItemHandler = item => {
-        item = { ...item, amount: 1 }
-        cartCtx.addItem(item)
-    }
-    const removeItemHandler = id => {
-        cartCtx.removeItem(id)
-    }
+    const cartItems = useSelector(state => state.cart.items)
+    const totalAmount = useSelector(state => state.cart.totalAmount)
 
-    const foodsClearHandler = () => {
-        cartCtx.clearAll()
-    }
     return (
         <Modal onCloseCart={props.onCloseCart} title={'Cart Details'} width="w-[90%] md:w-[70%] lg:w-[50%]">
             <div className="cart-container w-full mt-6">
-                <ul className='w-full flex flex-col rounded-md p-2 gap-3'>
+                <ul className='w-full flex flex-col rounded-md p-2 gap-8 overflow-auto max-h-96'>
 
-                    {cartCtx.items.length > 0 ? cartCtx.items.map(item => (
-                        <CartItem {...item} addItemHandler={addItemHandler.bind(null, item)} removeItemHandler={removeItemHandler.bind(null, item.id)} />
+                    {cartItems.length > 0 ? cartItems.map(item => (
+                        <CartItem {...item} />
                     )) :
                         <p>
                             <td>You have not any order yet!</td>
@@ -32,9 +24,9 @@ const Cart = (props) => {
 
                 </ul>
                 <div className="cart-bottom flex justify-between items-center p-4">
-                    <div>Balance: {cartCtx.totalAmount}</div>
+                    <div>Balance: {totalAmount}</div>
                     <div className="cart-bottom__right flex gap-2">
-                        <button className='hover:scale-110 hover:bg-red-500 hover:text-black transition-all ease-in-out border border-red-500 border-sm px-4 py-2 rounded-md text-center' onClick={foodsClearHandler}>clear</button>
+                        <button className='hover:scale-110 hover:bg-red-500 hover:text-black transition-all ease-in-out border border-red-500 border-sm px-4 py-2 rounded-md text-center'>clear</button>
                         <button className='hover:scale-110 hover:bg-green-500 hover:text-black transition-all ease-in-out border border-green-500 border-sm px-4 py-2 rounded-md text-center'>order</button>
                     </div>
                 </div>

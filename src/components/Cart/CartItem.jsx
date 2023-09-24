@@ -1,36 +1,46 @@
 import React, { useState } from 'react'
 import { AiOutlinePlus, AiOutlineLine, AiOutlineClose } from 'react-icons/ai';
+import { useSelector, useDispatch } from 'react-redux';
+import { cartSliceActions } from '../../store/cartSlice';
 
 
 const CartItem = (props) => {
-    const [foodAmount,setFoodAmount] = useState(props.amount)
+    const [foodAmount, setFoodAmount] = useState(props.quantity)
     const addFoodToCartHandler = () => {
-        props.addItemHandler(props)
-        setFoodAmount(prev => prev += 1)
+        dispatch(cartSliceActions.addToCartHandler(props))
     }
     const removeFromFoodCartHandler = () => {
         props.removeItemHandler(props.id)
         setFoodAmount(prev => prev -= 1)
     }
+
+    const dispatch = useDispatch()
     return (
         <>
             <li className='flex justify-between after:w-full after:bg-green-500 after:h-[1px] after:absolute relative after:-bottom-1 mb-3'>
-                <div className="cart-item-left flex flex-col ga-2">
-                    <span className='font-bold text-xl'>{props.title}</span>
-                    <div className='flex gap-10'>
-                        <span>{props.price}   $</span>
-                        <span className='flex items-center justify-center'>
-                            <AiOutlineClose className='text-xs' />
-                            <span>{foodAmount}</span>
-                        </span>
+                <div className="cart-item-left flex flex-col gap-3">
+                    <span className='font-bold text-2xl'>{props.title}</span>
+                    <div>
+                        <div className='flex gap-2 items-center'>
+                            <span className='text-lg text-primary'>Price:</span>
+                            <span>{props.price}   $</span>
+                        </div>
+                        <div className='flex gap-2 items-center'>
+                            <span className='text-lg text-primary'>Amount:</span>
+                            <span>{props.quantity}</span>
+                        </div>
+                        <div className='flex gap-2 items-center'>
+                            <span className='text-lg text-primary'>Total Price:</span>
+                            <span>{props.totalPrice} $</span>
+                        </div>
                     </div>
                 </div>
                 <div className="cart-item-right flex gap-2 items-center">
                     <div className='p-1 hover:scale-110 hover:bg-green-500 rounded-md transition-all ease-in-out border border-green-500 border-sm'>
-                        <AiOutlinePlus className='font-bold text-xl hover:text-black ' onClick={addFoodToCartHandler}/>
+                        <AiOutlinePlus className='font-bold text-xl hover:text-black ' onClick={addFoodToCartHandler} />
                     </div>
                     <div className='p-1 hover:scale-110 hover:bg-green-500 rounded-md transition-all ease-in-out border border-green-500 border-sm'>
-                        <AiOutlineLine className='font-bold text-xl hover:text-black ' onClick={removeFromFoodCartHandler}/>
+                        <AiOutlineLine className='font-bold text-xl hover:text-black ' onClick={removeFromFoodCartHandler} />
                     </div>
                 </div>
             </li>
