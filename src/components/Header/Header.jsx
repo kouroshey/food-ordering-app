@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import NavbarComp from './NavbarComp';
 import CartButton from '../Cart/CartButton';
+import { useDispatch } from 'react-redux';
+import { cartSliceActions } from '../../store/cartSlice';
 
-const Header = (props) => {
+const Header = () => {
   // set state for changing header bg when scrolled
   const [isScrolling, setIsScrolling] = useState(false)
+
+  const dispatch = useDispatch()
+  const showCartHandler = () => {
+    dispatch(cartSliceActions.showCartHandler())
+  }
   
   useEffect(() => {
     // set function for setting state
@@ -34,7 +41,7 @@ const Header = (props) => {
         <NavbarComp />
       </div>
       <div className={`w-full transition duration-300 ease-in-out z-40 ${!isScrolling && 'opacity-0'}`}>
-        <CartButton onShowCart={props.onShowCart} />
+        <CartButton onShowCart={showCartHandler} />
       </div>
     </header>
   )

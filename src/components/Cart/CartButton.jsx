@@ -9,7 +9,7 @@ const CartButton = (props) => {
     }, 0) 
     return (
         <>
-            <div onClick={props.onShowCart} className="food-order justify-center flex gap-2 bg-primary text-black px-2 transition-all ease-in-out cursor-pointer items-center">
+            <div onClick={props.onShowCart} className="justify-center flex gap-2 bg-primary text-black px-2 transition-all ease-in-out cursor-pointer items-center">
                 <div className="cart-button-content flex gap-2 items-center relative p-2 hover:scale-105 transition ease-in-out">
                     <span className='text-white'>Cart</span>
                     <MdShoppingCart onClick={props.onCloseCart} className='font-bold text-xl' />

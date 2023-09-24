@@ -2,17 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     items: [],
-    totalAmount: 0
+    totalAmount: 0,
+    cartIsShown: false
 }
-
-// const foodData = {
-//     id,
-//     title,
-//     price,
-//     totalPrice,
-//     quantity: 1
-// }
-
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -39,6 +31,12 @@ const cartSlice = createSlice({
         },  
         removeFromCartHandler(state, action) {
             
+        },
+        showCartHandler(state) {
+            state.cartIsShown = true
+        },
+        hideCartHandler(state) {
+            state.cartIsShown = false
         }
     }
 })

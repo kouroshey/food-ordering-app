@@ -8,7 +8,6 @@ const FoodComp = (props) => {
     const [addIsClicked, setAddIsClicked] = useState(false)
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
-    console.log(cart);
     const inputShowHandler = () => {
         setAddIsClicked(true)
     }

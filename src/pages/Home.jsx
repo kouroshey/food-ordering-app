@@ -1,6 +1,4 @@
-import React from 'react';
 import FoodList from '../components/FoodList/FoodList'
-import Footer from '../components/Footer/Footer';
 
 const Home = () => {
 
