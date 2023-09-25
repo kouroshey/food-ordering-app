@@ -10,8 +10,8 @@ const CartItem = (props) => {
         dispatch(cartSliceActions.addToCartHandler(props))
     }
     const removeFromFoodCartHandler = () => {
-        props.removeItemHandler(props.id)
-        setFoodAmount(prev => prev -= 1)
+        dispatch(cartSliceActions.removeFromCartHandler(props.id))
+
     }
 
     const dispatch = useDispatch()
@@ -28,10 +28,6 @@ const CartItem = (props) => {
                         <div className='flex gap-2 items-center'>
                             <span className='text-lg text-primary'>Amount:</span>
                             <span>{props.quantity}</span>
-                        </div>
-                        <div className='flex gap-2 items-center'>
-                            <span className='text-lg text-primary'>Total Price:</span>
-                            <span>{props.totalPrice} $</span>
                         </div>
                     </div>
                 </div>

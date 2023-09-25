@@ -1,9 +1,7 @@
 import React, { useContext } from 'react'
 import Modal from '../Modal/Modal'
 import CartItem from './CartItem'
-import CartContext from '../../store/cart-context'
-import { useSelector, useDispatch } from 'react-redux';
-import { cartSliceActions } from '../../store/cartSlice';
+import { useSelector } from 'react-redux';
 
 const Cart = (props) => {
     const cartItems = useSelector(state => state.cart.items)

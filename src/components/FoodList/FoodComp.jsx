@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { cartSliceActions } from '../../store/cartSlice';
 
@@ -7,7 +7,6 @@ const FoodComp = (props) => {
     const { title, img, price, id } = props.food
     const [addIsClicked, setAddIsClicked] = useState(false)
     const dispatch = useDispatch()
-    const cart = useSelector(state => state.cart)
     const inputShowHandler = () => {
         setAddIsClicked(true)
     }
@@ -17,7 +16,6 @@ const FoodComp = (props) => {
             id: id,
             title: title,
             price: Number(price),
-            totalPrice: price,
             quantity: 1
         })) 
     }
