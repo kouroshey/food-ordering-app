@@ -45,6 +45,10 @@ const cartSlice = createSlice({
         },
         hideCartHandler(state) {
             state.cartIsShown = false
+        },
+        clearCartItemsHandler(state) {
+            console.log('state');
+            state.items = []
         }
     }
 })

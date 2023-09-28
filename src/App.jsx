@@ -15,13 +15,6 @@ const App = () => {
     dispatch(cartSliceActions.hideCartHandler())
   }
 
-  // const [cartIsShown, setCartIsShown] = useState(false)
-  // const showCartHandler = () => {
-  //   setCartIsShown(true)
-  // }
-  // const closeCartHandler = () => {
-  //   setCartIsShown(false)
-  // }
   return (
     <>
       {cartState && <Cart onCloseCart={closeCartHandler} />}

@@ -30,7 +30,6 @@ const FoodList = () => {
             if (error) {
                 setFetchError('Could not fetch category items! Please check your connection');
                 setFoodsCategoryItems(null)
-                console.log(error);
             }
             if (data) {
                 setFoodsCategoryItems(data)
@@ -75,9 +74,13 @@ const FoodList = () => {
                         <section id='Selected-Category' className='flex flex-col gap-8 pt-16'>
                             <h2 className='text-2xl w-max md:text-3xl font-semibold after:w-full after:h-[2px] after:bg-primary after:block after:mt-1'>Selected Category: <span className='text-green-500'>{selectedCategory}</span></h2>
                             <section className="foodlist-selected w-full grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                                {selectedFoods.map(food => (
+                                {selectedFoods.length > 0 ?
+                                    selectedFoods.map(food => (
                                     <FoodComp food={food} />
-                                ))}
+                                ))
+                                    :
+                                    <span className='text-red-500'>We don`t have any food in this Category :(</span>
+                                     }
                             </section>
                         </section>
                     }

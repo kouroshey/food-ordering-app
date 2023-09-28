@@ -37,9 +37,8 @@ const FoodComp = (props) => {
                             {addIsClicked ?
                                 <>
                                     <button onClick={addFoodToCartHandler} className=" text-white food-order-button flex gap-2 bg-green-500 p-2 rounded-md hover:scale-110 transition-all ease-in-out cursor-pointer">
-                                        add
+                                        add 1 meal
                                     </button>
-                                    <input type="number" className=' border-b border-primary w-10 text-xl pl-2 outline-none' max='5' min='1' defaultValue='1' />
                                 </>
                                 :
                                 <div onClick={inputShowHandler} className="food-order-button flex gap-2 bg-primary p-2 rounded-md hover:scale-110 transition-all ease-in-out cursor-pointer">
