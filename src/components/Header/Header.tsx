@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, ReactElement } from 'react';
 import NavbarComp from './NavbarComp';
 import CartButton from '../Cart/CartButton';
 import { useDispatch } from 'react-redux';
 import { cartSliceActions } from '../../store/cartSlice';
 
-const Header = () => {
+const Header = ():ReactElement => {
   // set state for changing header bg when scrolled
-  const [isScrolling, setIsScrolling] = useState(false)
+  const [isScrolling, setIsScrolling] = useState<boolean>(false)
 
   const dispatch = useDispatch()
   const showCartHandler = () => {

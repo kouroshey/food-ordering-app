@@ -1,12 +1,17 @@
-
+import { ReactElement } from 'react';
 import { FaInstagram, FaTwitter, FaWhatsapp, FaFacebookF } from 'react-icons/fa';
 import { Link } from 'react-router-dom'
 import MobileMenu from './MobileMenu';
 
 
-const NavbarComp = (props) => {
+const NavbarComp = ():ReactElement => {
     //an array for nevbar icons to using better. i will do map on this
-    const iconsArray = [
+    type Icon = {
+        id: number,
+        icon: ReactElement,
+        path: string
+    }
+    const iconsArray: Icon[] = [
         { id: 1, icon: <FaInstagram className="w-full h-full hover:text-white transition-all ease-in-out" />, path: 'https://www.instagram.com/' },
         { id: 2, icon: <FaTwitter className="w-full h-full hover:text-white transition-all ease-in-out" />, path: 'https://twitter.com/' },
         { id: 3, icon: <FaWhatsapp className="w-full h-full hover:text-white transition-all ease-in-out" />, path: 'https://www.whatsapp.com/' },
@@ -14,12 +19,13 @@ const NavbarComp = (props) => {
     ]
 
     // this function does: when clicking on a link in nav, scrool in that section
-    const scrollToSection = (sectionId) => {
-        const section = document.querySelector(sectionId);
+    const scrollToSection = (sectionId:string) => {
+        const section = document.querySelector(sectionId) as HTMLElement
         if (section) {
             section.scrollIntoView({ behavior: 'smooth' });
         }
     }
+
     return (
         <>
 
